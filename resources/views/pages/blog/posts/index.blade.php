@@ -17,7 +17,7 @@
                 <div>
                     <a href="#" class="flex items-center">
                         <img src="{{ url($post->user->avatar) }}" width="50" class="rounded-full mr-2">
-                        <h1 class="font-bold text-gray-700 hover:underline">{{ $post->user->name }}</h1>
+                        <h1 class="font-bold text-gray-700 hover:underline">{{ $post->user->fullname() }}</h1>
                     </a>
                 </div>
             </x-CardPostComponent>

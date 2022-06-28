@@ -16,4 +16,6 @@
 <body class="font-sans antialiased" style="background: #edf2f7;">
     <div class="overflow-x-hidden bg-gray-100 flex flex-col min-h-screen ">
 
-        @include('layouts.partials.navbar')
+        <header {{ $attributes }}>
+            <x-Navigation></x-Navigation>
+        </header>
