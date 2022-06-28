@@ -13,6 +13,6 @@
 
     <link href="{{ url('/css/app.css') }}" rel="stylesheet">
 </head>
-<body class="font-sans antialiased" style="background: #edf2f7;">
+<body class="flex flex-col min-h-screen font-sans antialiased" style="background: #edf2f7;">
     <div class="overflow-x-hidden bg-gray-100">
         @include('layouts.partials.navbar')
