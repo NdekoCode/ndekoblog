@@ -40,11 +40,15 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $categories = ["girl", "woment", "man", "beauty", "student"];
+        $url = "https://loremflickr.com/540/540/" . $categories[rand(0, count($categories) - 1)] . "/?lock=" . rand(0, count($categories) - 1);
         $user = User::create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
+            'avatar' => $url,
             'password' => Hash::make($request->password),
+
         ]);
 
         event(new Registered($user));

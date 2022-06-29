@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('posts', PostController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Un groupe de route encapsyller par un middleware
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
+});
 require __DIR__ . '/auth.php';

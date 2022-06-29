@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();// On aura trop de requete à lq fois car on va aussi recuperer les caterory
+        $posts = Post::with(['category', 'user'])->get(); // En where in =en une seule fois, permet de diminuer drastiquement le nombre de requete SQL
         return view('pages.blog.posts.index', compact('posts'));
     }
 
@@ -26,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('id', 'DESC')->get();
+        return view('pages.blog.posts.create', compact('categories'));
     }
 
     /**

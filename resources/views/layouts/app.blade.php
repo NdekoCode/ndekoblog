@@ -1,5 +1,3 @@
-<x-Header></x-Header>
-
-
+@include('layouts.partials.header')
 @yield('content')
-<x-Footer></x-Footer>
+@include('layouts.partials.footer')
