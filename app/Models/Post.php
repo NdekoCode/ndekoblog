@@ -13,7 +13,7 @@ class Post extends Model
     use HasFactory;
     const EXCERPT_LENGTH = 250;
     /** Pour eviter le massAssignment Exception  et ainsi plus besoin de la proprieter "$fillable"*/
-    protected $guarded = [];
+    protected $fillable = ['title', 'content', 'image'];
     public function user()
     {
         return $this->belongsTo(User::class);

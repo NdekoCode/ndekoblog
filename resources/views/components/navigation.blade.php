@@ -1,5 +1,5 @@
 <nav class="px-6 py-4 bg-white shadow">
-    <div class="container flex flex-col mx-auto max-w-7xl md:flex-row md:items-center md:justify-between">
+    <div class="container flex flex-col max-w-7xl mx-auto sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between">
         <div class="flex items-center justify-between">
             <div>
                 <a href="#" class="text-xl font-bold text-gray-800 md:text-2xl">Ndekoblog</a>

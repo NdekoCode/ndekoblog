@@ -112,15 +112,15 @@
         <div class="w-100 flex flex-grow flex-col items-end justify-start">
             <div class="flex flex-row space-x-3">
                 <!-- Follow Button -->
-                <button class="flex rounded-md bg-blue-500 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
+                <a href="{{ route('posts.create') }}" class="decoration-none flex rounded-md bg-blue-500 py-2 px-4 text-white transition-all duration-150 ease-in-out hover:bg-blue-600">
                     <svg class="mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
 
-                    Follow
-                </button>
+                    Create a post
+                </a>
 
                 <!-- More Actions Button -->
-                <button class="flex rounded-md bg-gray-100 py-2 px-1 text-white 
+                <button class="flex rounded-md bg-gray-100 py-2 px-1 text-white
         transition-all duration-150 ease-in-out hover:bg-gray-200">
                     <svg class="fill-gray-500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />

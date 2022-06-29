@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -32,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('id', 'DESC')->get();
+        return view('pages.blog.posts.create', compact('categories'));
     }
 
     /**

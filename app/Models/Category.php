@@ -9,5 +9,5 @@ class Category extends Model
 {
     use HasFactory;
     /** Pour eviter le massAssignment Exception  et ainsi plus besoin de la proprieter "fillable"*/
-    protected $guarded = [];
+    protected $fillable = ['name'];
 }

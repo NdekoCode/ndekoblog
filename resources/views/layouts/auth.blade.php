@@ -17,7 +17,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
-    <div class="overflow-x-hidden bg-gray-100 flex flex-col min-h-screen ">
+    <div class="overflow-x-hidden bg-gray-100 flex flex-col min-h-screen max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         @yield('content')
 
