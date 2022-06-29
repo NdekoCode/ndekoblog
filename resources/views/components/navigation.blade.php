@@ -18,8 +18,11 @@
             <a href="#" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">Blog</a>
             <a href="#" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">About us</a>@auth
             <a href="{{ route('dashboard') }}" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">Dashboard</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="p-2 my-1 text-white transition-all border border-transparent rounded bg-sky-500 hover:bg-transparent hover:text-blue-500 hover:border-sky-500 md:mx-4 md:my-0">Logout</button>
+            </form>
 
-            <a href="#" class="p-2 my-1 text-white transition-all border border-transparent rounded bg-sky-500 hover-bg:transparent hover:text-blue-500 hover:border-sky-500 md:mx-4 md:my-0">Logout</a>
 
 
             @endauth

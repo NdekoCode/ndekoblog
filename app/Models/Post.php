@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory;
-    const EXCERPT_LENGTH = 100;
+    const EXCERPT_LENGTH = 250;
     /** Pour eviter le massAssignment Exception  et ainsi plus besoin de la proprieter "$fillable"*/
     protected $guarded = [];
     public function user()
@@ -26,6 +26,6 @@ class Post extends Model
 
     public function excerpt()
     {
-        return Str::limit($this->body, self::EXCERPT_LENGTH);
+        return Str::limit($this->content, self::EXCERPT_LENGTH);
     }
 }

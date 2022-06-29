@@ -14,10 +14,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $categories = ["girl", "woment", "man", "beauty", "student"];
+        $url = "https://loremflickr.com/540/540/" . $categories[rand(0, count($categories) - 1)] . "/?lock=" . rand(0, count($categories) - 1);
         return [
-            'name' => $this->faker->name(),
+            'firstname' => $this->faker->unique()->firstName(),
+            'lastname' => $this->faker->unique()->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'avatar' => $url,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

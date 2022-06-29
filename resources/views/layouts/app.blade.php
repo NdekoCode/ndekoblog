@@ -1,3 +1,5 @@
-@include("layouts.partials.header")
+<x-Header></x-Header>
+
+
 @yield('content')
-@include("layouts.partials.footer")
+<x-Footer></x-Footer>

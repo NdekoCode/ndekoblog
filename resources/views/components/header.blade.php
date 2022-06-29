@@ -13,6 +13,9 @@
 
     <link href="{{ url('/css/app.css') }}" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen font-sans antialiased" style="background: #edf2f7;">
-    <div class="overflow-x-hidden bg-gray-100">
-        @include('layouts.partials.navbar')
+<body class="font-sans antialiased" style="background: #edf2f7;">
+    <div class="overflow-x-hidden bg-gray-100 flex flex-col min-h-screen ">
+
+        <header {{ $attributes }}>
+            <x-Navigation></x-Navigation>
+        </header>
