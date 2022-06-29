@@ -15,7 +15,7 @@
         </div>
         <div class="flex-col hidden md:flex md:flex-row md:-mx-4">
 
-            <a href="#" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">Blog</a>
+            <a href="{{ route('posts.index') }}" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">Blog</a>
             <a href="#" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">About us</a>@auth
             <a href="{{ route('dashboard') }}" class="p-2 my-1 text-gray-800 rounded hover:text-blue-500 md:mx-4 md:my-0">Dashboard</a>
             <form action="{{ route('logout') }}" method="post">

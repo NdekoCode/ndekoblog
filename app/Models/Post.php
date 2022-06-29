@@ -28,4 +28,9 @@ class Post extends Model
     {
         return Str::limit($this->content, self::EXCERPT_LENGTH);
     }
+
+    public function getTitleAttribute($attribute)
+    {
+        return Str::title($attribute);
+    }
 }

@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.auth',['title'=>"Register in our website"])
 @section('content')
 <!-- Container -->
 <div class="container mx-auto">
     <div class="flex justify-center px-6 my-12">
         <!-- Row -->
-        <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-lg">
             <!-- Col -->
             <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg" style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"></div>
             <!-- Col -->
