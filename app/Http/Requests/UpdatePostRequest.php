@@ -13,7 +13,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:250',
+            'content' => 'required|string',
+            'image' => 'image|sometimes',
+            // La category doit exister dans la base de donnée dans la table 'categories' et sur la colonne 'id'
+            'category' => 'required|exists:categories,id'
         ];
     }
 }

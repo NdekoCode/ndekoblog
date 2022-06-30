@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -51,7 +52,7 @@ class PostController extends Controller
             'content' => $request->content,
             'image' => $imageName
         ]);
-        return redirect()->route('dashboard')->with('success', 'Votre article créer avec succes');
+        return redirect()->route('dashboard')->with('success', 'Votre article a été créer avec succes');
     }
 
     /**
@@ -80,13 +81,23 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePostRequest  $request
+     * @param  \App\Http\Requests\StorePostRequest  $request
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $postData = [
+            'title' => $request->title,
+            'content' => $request->content
+        ];
+        if (!empty($request->image)) {
+            $imageName = $request->image->store('posts');
+            $postData['image'] = $imageName;
+        }
+        $post->update($postData);
+
+        return redirect()->route('dashboard')->with('success', "Votre article a bien été modifié");
     }
 
     /**

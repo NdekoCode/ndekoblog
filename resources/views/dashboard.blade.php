@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'title' =>
+        "Administration de l'utilisateur " .
+        auth()->user()->fullname(),
+])
 @section('content')
     <div class="mx-20 mt-10 grid shadow">
 
@@ -237,6 +241,10 @@
                                     </th>
                                     <th
                                         class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Categorie
+                                    </th>
+                                    <th
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                                         Actions
                                     </th>
                                 </tr>
@@ -249,12 +257,14 @@
                                                 <div class="h-10 w-10 flex-shrink-0">
                                                     <img class="h-full w-full rounded-full"
                                                         src="{{ url("/storage/$post->image") }}"
-                                                        alt="{{ $post->title }}" />
+                                                        alt="{{ $post->title }}" loading="lazy" />
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                                            <p class="whitespace-no-wrap text-gray-900">{{ $post->title }}</p>
+                                            <p class="whitespace-no-wrap text-gray-900"><a
+                                                    href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                                            </p>
                                         </td>
                                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                             <p class="whitespace-no-wrap text-gray-900">
@@ -273,6 +283,11 @@
                                                         class="absolute inset-0 rounded-full bg-green-200 opacity-50"></span>
                                                     <span class="relative">Activo</span>
                                                 </span>
+                                            </p>
+                                        </td>
+                                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                            <p class="whitespace-no-wrap text-gray-900">
+                                                {{ $post->category->name }}
                                             </p>
                                         </td>
                                         <td

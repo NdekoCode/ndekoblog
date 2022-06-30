@@ -27,7 +27,16 @@ class StorePostRequest extends FormRequest
             'title' => 'required|string|max:250|unique:posts',
             'content' => 'required|string|unique:posts',
             'image' => 'required|image',
-            'category' => 'required'
+            'category' => 'required|exists:categories,id'
         ];
+    }
+    protected function prepareForValidation()
+    {
+
+        // $this fait directement reference à la request()
+        // Si l'image n'est pas definis ou si elle est vide alors retire là de la requete
+        if (empty($this->image)) {
+            $this->request->remove('image');
+        }
     }
 }

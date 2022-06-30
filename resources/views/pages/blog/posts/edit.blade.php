@@ -1,10 +1,11 @@
 @extends('layouts.app', ['title' => "Modifier l'article " . $post->title])
 @section('content')
     <h1 class="heading m-5 text-center text-2xl font-bold text-gray-800">New Post</h1>
-    <form method="POST" action="{{ route('posts.update') }}" enctype="multipart/form-data"
+    <form method="POST" action="{{ route('posts.update', $post) }}" enctype="multipart/form-data"
         class="editor mx-auto flex w-10/12 max-w-2xl flex-col border border-gray-300 p-4 text-gray-800 shadow-lg">
-        @csrf
+        {{-- La modification doit toujours utiliser une methode PUT out PATCH --}}
         @method('PUT')
+        @csrf
         <div class="mb-3 w-full">
             <x-label for="title" class="mb-3 text-base" value="Titre du posts"></x-label>
             <x-input
@@ -64,7 +65,7 @@
             </a>
             <button type="submit"
                 class="btn ml-2 cursor-pointer border border-blue-500 bg-blue-500 py-3 px-5 font-semibold text-gray-200">
-                Post</button>
+                Modifier mon post</button>
         </div>
     </form>
 @endsection
