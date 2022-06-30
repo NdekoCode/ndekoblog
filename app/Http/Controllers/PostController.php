@@ -73,7 +73,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::orderBy('id', 'DESC')->get();
+        return view('pages.blog.posts.edit', compact('post', 'categories'));
     }
 
     /**
