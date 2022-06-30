@@ -294,12 +294,15 @@
                                             class="flex flex-wrap items-center justify-evenly border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                             <a href="{{ route('posts.edit', $post) }}"
                                                 class="m-1 rounded border border-blue-500 bg-transparent p-2 text-blue-500 hover:bg-blue-500 hover:text-white">Edit</a>
+                                            <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit"
+                                                    onclick="return confirm('Voulez-vous vraiment supprimer cet article')"
+                                                    class="m-1 rounded border border-red-500 bg-transparent p-2 text-red-500 hover:bg-red-500 hover:text-white">
+                                                    Delete</button>
+                                            </form>
 
-                                            <a href="#"
-                                                class="m-1 rounded border border-red-500 bg-transparent p-2 text-red-500 hover:bg-red-500 hover:text-white">Delete</a>
-
-                                            <a href="#"
-                                                class="m-1 rounded border border-orange-500 bg-transparent p-2 text-orange-500 hover:bg-orange-500 hover:text-white">Edit</a>
                                         </td>
                                     </tr>
                                 @empty

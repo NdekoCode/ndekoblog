@@ -119,5 +119,7 @@ class PostController extends Controller
         if (!Gate::allows('update-posts', $post)) {
             return redirect()->route('posts.index')->with('warning', "Vous n'etes pas autorisés à effectuer cette action");
         }
+        $post->delete();
+        return redirect()->route('dashboard')->with('success', "Votre article a été supprimer avec succés");
     }
 }
