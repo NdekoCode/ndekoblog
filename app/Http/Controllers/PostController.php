@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Category;
-use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -74,6 +75,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
+        if (!Gate::allows('update-posts', $post)) {
+            return redirect()->route('posts.index')->with('warning', "Vous n'etes pas autorisés à effectuer cette action");
+        }
         $categories = Category::orderBy('id', 'DESC')->get();
         return view('pages.blog.posts.edit', compact('post', 'categories'));
     }
@@ -87,6 +92,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        if (!Gate::allows('update-posts', $post)) {
+            return redirect()->route('posts.index')->with('warning', "Vous n'etes pas autorisés à effectuer cette action");
+        }
         $postData = [
             'title' => $request->title,
             'content' => $request->content
@@ -108,6 +116,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if (!Gate::allows('update-posts', $post)) {
+            return redirect()->route('posts.index')->with('warning', "Vous n'etes pas autorisés à effectuer cette action");
+        }
     }
 }
