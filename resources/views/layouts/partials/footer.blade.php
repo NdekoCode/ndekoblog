@@ -1,1 +1,0 @@
-<x-Footer></x-Footer>

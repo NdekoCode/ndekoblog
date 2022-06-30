@@ -22,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();// On aura trop de requete à lq fois car on va aussi recuperer les caterory
-        $posts = Post::with(['category', 'user'])->get(); // En where in =en une seule fois, permet de diminuer drastiquement le nombre de requete SQL
+        $posts = Post::with(['category', 'user'])->latest()->get(); // En where in =en une seule fois, permet de diminuer drastiquement le nombre de requete SQL
         return view('pages.blog.posts.index', compact('posts'));
     }
 
@@ -45,7 +45,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $imageName = $request->image->store('posts');
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'image' => $imageName
+        ]);
+        return redirect()->route('dashboard')->with('success', 'Votre article créer avec succes');
     }
 
     /**

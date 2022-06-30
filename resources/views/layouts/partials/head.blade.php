@@ -13,4 +13,5 @@
 
     <link href="{{ url('/css/app.css') }}" rel="stylesheet">
 </head>
+
 <body class="font-sans antialiased" style="background: #edf2f7;">
