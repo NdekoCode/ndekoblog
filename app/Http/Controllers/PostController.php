@@ -14,7 +14,8 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth'])->except(['index', 'show']);
+        // On encapsule l'acces à certaines pages juste quand on est connecté et que l'on a le role 'editor'
+        $this->middleware(['auth', 'role:editor'])->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.

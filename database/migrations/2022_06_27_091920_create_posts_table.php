@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image');
+            $table->boolean('status')->nullable()->default(0);
             $table->timestamps();
 
             $table->foreignIdFor(User::class);
