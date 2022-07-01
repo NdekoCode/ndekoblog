@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app_admin', ['Administration'])
 @section('content')
     <div>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -168,8 +168,7 @@
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = ! dropdownOpen"
                                 class="relative block h-8 w-8 overflow-hidden rounded-full shadow focus:outline-none">
-                                <img class="h-full w-full object-cover"
-                                    src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
+                                <img class="h-full w-full object-cover" src="{{ auth()->user()->avatar }}"
                                     alt="Your avatar">
                             </button>
 
@@ -311,7 +310,7 @@
                                                             <div class="h-10 w-10 flex-shrink-0">
                                                                 {{-- A venir modifier --}}
                                                                 <img class="h-10 w-10 rounded-full"
-                                                                    src="{{ $user }}" alt="">
+                                                                    src="{{ $user->avatar }}" alt="">
                                                             </div>
 
                                                             <div class="ml-4">
@@ -398,7 +397,7 @@
                                             </div>
                                             <div class="relative">
                                                 <select
-                                                    class="block h-full w-full appearance-none appearance-none rounded-r border-t border-r border-b border-gray-400 bg-white py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-l focus:border-r focus:border-gray-500 focus:bg-white focus:outline-none sm:rounded-r-none sm:border-r-0">
+                                                    class="block h-full w-full appearance-none rounded-r border-t border-r border-b border-gray-400 bg-white py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-l focus:border-r focus:border-gray-500 focus:bg-white focus:outline-none sm:rounded-r-none sm:border-r-0">
                                                     <option>All</option>
                                                     <option>Active</option>
                                                     <option>Inactive</option>
@@ -468,7 +467,7 @@
                                                                 <div class="flex items-center">
                                                                     <div class="h-10 w-10 flex-shrink-0">
                                                                         <img class="h-full w-full rounded-full"
-                                                                            src="{{ url("/storage/$post->image") }}"
+                                                                            src="{{ $post->image }}"
                                                                             alt="{{ $post->title }}" loading="lazy" />
                                                                     </div>
                                                                 </div>
@@ -476,7 +475,7 @@
                                                             <td
                                                                 class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                                                 <p class="whitespace-no-wrap text-gray-900"><a
-                                                                        href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                                                                        href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a>
                                                                 </p>
                                                             </td>
                                                             <td
@@ -509,9 +508,9 @@
                                                             </td>
                                                             <td
                                                                 class="flex flex-wrap items-center justify-evenly border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                                                                <a href="{{ route('posts.edit', $post) }}"
+                                                                <a href="{{ route('admin.posts.edit', $post) }}"
                                                                     class="m-1 rounded border border-blue-500 bg-transparent p-2 text-blue-500 hover:bg-blue-500 hover:text-white">Edit</a>
-                                                                <form action="{{ route('posts.destroy', $post) }}"
+                                                                <form action="{{ route('admin.posts.destroy', $post) }}"
                                                                     method="POST">
                                                                     @method('delete')
                                                                     @csrf
