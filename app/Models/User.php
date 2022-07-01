@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->firstname . " " . $this->lastname;
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

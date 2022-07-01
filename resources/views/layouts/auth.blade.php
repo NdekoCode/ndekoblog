@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +17,25 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
+
 <body>
-    <div class="overflow-x-hidden bg-gray-100 flex flex-col min-h-screen max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="mx-auto flex min-h-screen max-w-7xl flex-col overflow-x-hidden bg-gray-100 sm:px-6 lg:px-8">
+        {{-- Alert --}}
+        @if (session('success'))
+            <x-Alert type="success" :alert="session('success')">
+            </x-Alert>
+        @endif
+        @if (session('danger'))
+            <x-Alert :alert="session('danger')">
+            </x-Alert>
+        @endif
+        @if (session('info'))
+            <x-Alert type="info" :alert="session('info')">
+            </x-Alert>
+            @endif @if (session('warning'))
+                <x-Alert type="warning" :alert="session('warning')">
+                </x-Alert>
+            @endif
+            @yield('content')
 
-        @yield('content')
-
-        <x-Footer></x-Footer>
+            <x-Footer></x-Footer>
