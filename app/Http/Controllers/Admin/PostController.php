@@ -18,7 +18,8 @@ class PostController extends Controller
     {
         $posts = Post::latest()->paginate(10);
         $users = User::latest()->paginate(5);
-        return view('pages.admin.index', compact('posts', 'users'));
+        $allUsers = User::all();
+        return view('pages.admin.index', compact('posts', 'users', 'allUsers'));
     }
 
     /**
