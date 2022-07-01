@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -19,7 +20,7 @@ class PostController extends Controller
         $posts = Post::latest()->paginate(10);
         $users = User::latest()->paginate(5);
         $allUsers = User::all();
-        return view('pages.admin.index', compact('posts', 'users', 'allUsers'));
+        return view('pages.admin.dashboard', compact('posts', 'users', 'allUsers'));
     }
 
     /**
@@ -29,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('pages.blog.posts.create', compact('category'));
     }
 
     /**
@@ -62,7 +64,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $post = Post::findOrfail($id);
+        return view('pages.blog.posts.create', compact('post', 'categories'));
     }
 
     /**

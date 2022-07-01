@@ -1,17 +1,9 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@include('layouts.partials.head-admin')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ app_title($title ?? null) }}</title>
+<body class="text-size-base leading-default m-0 bg-gray-50 font-sans font-normal text-slate-500 antialiased">
+    @include('pages.admin.partials.sidebar')
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <link href="{{ url('/css/app.css') }}" rel="stylesheet">
-</head>
-
-<body class="font-sans antialiased" style="background: #edf2f7;">
+    <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+        @include('pages.admin.partials.navigation')
+        <!-- cards -->
+        <div class="mx-auto w-full px-6 py-6">
